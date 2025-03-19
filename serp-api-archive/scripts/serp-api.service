@@ -1,0 +1,15 @@
+[Unit]
+Description=SERP API Service
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/serp
+ExecStart=/home/ubuntu/serp/venv/bin/uvicorn serp_api:app --host 0.0.0.0 --port 7777
+Restart=always
+RestartSec=5
+Environment=PYTHONPATH=/home/ubuntu/serp
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
